@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <title>Modèle</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <title>formulaire-voyage</title>
+  </head>
+  <body>
     <div class="container">
-        <div class="banniere-titre">
-            <h1>
-                Titre
-            </h1>
+      <div class="banniere-titre">
+        <h1>Trouvez votre prochaine destination</h1>
+      </div>
+      <form id="form">
+        <div class="field">
+          <select id="pays">
+            <option value="hawai">Hawai</option>
+            <option value="maldives">Maldives</option>
+            <option value="bahamas">Bahamas</option>
+            <option value="borabora">Bora-bora</option>
+            <option value="tahiti">Tahiti</option>
+          </select>
         </div>
+        <!-- Date de départ -->
+        <div class="field">
+          <input type="date" id="start" value="2021-06-02" min="2021-06-01" />
+        </div>
+        <!-- Date de retour -->
+        <div class="field">
+          <input type="date" id="end" value="2021-06-02" min="2021-06-01" />
+        </div>
+        <!-- Bouton -->
+        <button type="submit">
+          <i class="fas fa-plane"></i>
+        </button>
+      </form>
+      <!-- Les résultats de la selection -->
+      <div class="liste-resultats"></div>
     </div>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
 
 <script src="script.js"></script>
