@@ -7,42 +7,43 @@ const pays = document.getElementById("pays");
 const start = document.getElementById("start");
 const end = document.getElementById("end");
 const listeResultats = document.querySelector(".liste-resultats");
-const voyages = [
+const messageNoResult = document.querySelector(".no-resultats");
+let voyages = [
   {
     pays: "borabora",
     prix: 1490,
-    voyageurs: 2
+    voyageurs: 2,
   },
   {
     pays: "bahamas",
     prix: 1790,
-    voyageurs: 4
+    voyageurs: 4,
   },
   {
     pays: "bahamas",
     prix: 1490,
-    voyageurs: 2
+    voyageurs: 2,
   },
   {
     pays: "tahiti",
     prix: 1790,
-    voyageurs: 4
+    voyageurs: 4,
   },
 ]; //Fermeture du tableau
 //Je vérifié le contenu du tableau
-// console.log(voyages, "tableaux voyages");
+console.log(voyages.includes(pays));
+
 
 form.addEventListener("submit", function (e) {
   //Empêcher le rafraichissement de la page
   e.preventDefault();
   console.log("formulaire validé");
   //Je stock les variables dans l'objet choix
-  const choix = {
+  let choix = {
     pays: pays.value,
     start: start.value,
     end: end.value,
   };
-  console.log(choix, "choix");
   //Je transforme l'objet
   const choixString = JSON.stringify(choix);
   console.log(choixString);
@@ -61,9 +62,9 @@ function displayDetails() {
   end.value = choixObjet.end;
   //Filter en fonction du choix du pays enregistré
   const resultats = voyages.filter((voyage) => voyage.pays === pays.value);
-  console.log(resultats, "resultats");
+//   console.log(resultats, "resultats");
   resultats.forEach((resultat) => {
-    console.log(resultat, "resulat");
+    // console.log(resultat, "resultat");
     //Je crée une div avec les valeurs à l'interieur
     const item = `
                     <div class="item">
@@ -75,14 +76,21 @@ function displayDetails() {
                         </p>
                         <p>
                             Prix vol inclus ${resultat.prix}€
-                        </p>
+                            </p>
                         <button> Go! </button>
                     </div>
       
-                `
-                //Je place cette DIV dans la page
-                listeResultats.innerHTML += item;
+                `;
+    //Je place cette DIV dans la page
+    listeResultats.innerHTML += item;
   });
   //Fermeture de la fonction
+};
+if (localStorage.length > 0) {
+  //Appel de la fonction
+  displayDetails();
+} else {
+  //On affiche le message
+  messageNoResult.classList.toggle("show-no-result")
 }
-displayDetails();
+

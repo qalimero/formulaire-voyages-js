@@ -56,6 +56,12 @@ button{
 .liste-resultats{
     display: flex;
 }
+.no-resultats{
+    display: none;
+}
+.show-no-result{
+    display: flex;
+}
 /* Affichage des voyages */
 .item{
     flex: 1;
