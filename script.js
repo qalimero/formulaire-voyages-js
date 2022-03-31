@@ -2,7 +2,6 @@ console.log("connecté");
 //Je selectionne & je stock
 // Le formulaire
 const form = document.getElementById("form");
-// Les champs input text & input date
 const pays = document.getElementById("pays");
 const start = document.getElementById("start");
 const end = document.getElementById("end");
@@ -29,17 +28,14 @@ let voyages = [
     prix: 1790,
     voyageurs: 4,
   },
-]; //Fermeture du tableau
-//Je vérifié le contenu du tableau
-console.log(voyages.includes(pays));
-
+]; 
 
 form.addEventListener("submit", function (e) {
   //Empêcher le rafraichissement de la page
   e.preventDefault();
   console.log("formulaire validé");
   //Je stock les variables dans l'objet choix
-  let choix = {
+  const choix = {
     pays: pays.value,
     start: start.value,
     end: end.value,
@@ -51,7 +47,7 @@ form.addEventListener("submit", function (e) {
   localStorage.setItem("details", choixString);
   //On rafraichit la page pour faire apparaître les informations
   window.location.href = window.location.href;
-});
+}); 
 
 function displayDetails() {
   //Ici récupération du storage
@@ -94,3 +90,4 @@ if (localStorage.length > 0) {
   messageNoResult.classList.toggle("show-no-result")
 }
 
+    
